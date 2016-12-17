@@ -4,11 +4,10 @@ using RawRabbit;
 using RawRabbit.vNext;
 using RawRabbit.Configuration;
 using Warden.Common.Commands;
-using Warden.Common.Commands.Wardens;
 using Warden.Common.Extensions;
 using Warden.Common.Nancy;
-using Warden.Common.Extensions;
 using Warden.Services.Spawn.Handlers;
+using Warden.Services.Spawn.Shared.Commands;
 
 namespace Warden.Services.Spawn.Framework
 {

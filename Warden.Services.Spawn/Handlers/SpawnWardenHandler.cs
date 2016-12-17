@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Warden.Common.Commands;
-using Warden.Common.Commands.Wardens;
+using Warden.Services.Spawn.Shared.Commands;
 
 namespace Warden.Services.Spawn.Handlers
 {
