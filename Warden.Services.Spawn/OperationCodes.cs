@@ -1,4 +1,4 @@
-﻿namespace Warden.Services.Spawn.Shared
+﻿namespace Warden.Services.Spawn
 {
     public static class OperationCodes
     {

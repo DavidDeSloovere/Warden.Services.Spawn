@@ -1,6 +1,6 @@
 ﻿using Warden.Common.Host;
 using Warden.Services.Spawn.Framework;
-using Warden.Services.Spawn.Shared.Commands;
+using Warden.Messages.Commands.Spawn;
 
 namespace Warden.Services.Spawn
 {
