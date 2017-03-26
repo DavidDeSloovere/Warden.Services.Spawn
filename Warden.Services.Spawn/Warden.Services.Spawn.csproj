@@ -19,6 +19,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Warden" Version="1.3.2" />
+    <PackageReference Include="Warden.Integrations.Cachet" Version="1.3.1" />
+    <PackageReference Include="Warden.Integrations.HttpApi" Version="1.3.1" />
+    <PackageReference Include="Warden.Integrations.MsSql" Version="1.3.1" />
+    <PackageReference Include="Warden.Integrations.SendGrid" Version="1.3.1" />
+    <PackageReference Include="Warden.Integrations.Slack" Version="1.3.1" />
+    <PackageReference Include="Warden.Watchers.Disk" Version="1.3.1" />
+    <PackageReference Include="Warden.Watchers.MongoDb" Version="1.3.1" />
+    <PackageReference Include="Warden.Watchers.MsSql" Version="1.3.1" />
+    <PackageReference Include="Warden.Watchers.Process" Version="1.3.1" />
+    <PackageReference Include="Warden.Watchers.Redis" Version="1.3.2" />
+    <PackageReference Include="Warden.Watchers.Web" Version="1.3.1" />
     <PackageReference Include="Warden.Common" Version="1.0.*" />
     <PackageReference Include="Warden.Messages" Version="1.0.*" />
     <PackageReference Include="Autofac" Version="4.2.1" />

@@ -1,6 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
+using Warden.Core;
 using Warden.Messages.Commands;
 using Warden.Messages.Commands.Spawn;
+using Warden.Services.Spawn.Services;
+using Warden.Watchers.Web;
 
 namespace Warden.Services.Spawn.Handlers
 {
@@ -29,9 +34,38 @@ namespace Warden.Services.Spawn.Handlers
         //    //await _bus.Publish(new Common.Commands.SpawnWarden(command.AuthenticatedUserId,
         //    //    configurationId.ToString(), securedRequest.Value.Token, command.Region));
         //}
+
+        private readonly IWardenHostService _wardenHostService;
+
+        public SpawnWardenHandler(IWardenHostService wardenHostService)
+        {
+            _wardenHostService = wardenHostService;
+        }
+
         public async Task HandleAsync(SpawnWarden command)
         {
-            await Task.CompletedTask;
+            var name = $"Warden {Guid.NewGuid()}";
+            await _wardenHostService.AddWardenAsync(command.UserId, CreateWarden(name));
+            await _wardenHostService.StartWardenAsync(command.UserId, name);
+        }
+
+        private static IWarden CreateWarden(string name, int interval = 5)
+        {
+            var wardenConfiguration = WardenConfiguration
+                .Create()
+                .AddWebWatcher("http://httpstat.us/200", cfg =>
+                {
+                    cfg.EnsureThat(response => response.StatusCode == HttpStatusCode.Accepted);
+                })  
+                .SetGlobalWatcherHooks((hooks, integrations) =>
+                {
+                    Console.WriteLine($"Hello!");
+                })
+                .WithInterval(TimeSpan.FromSeconds(interval))
+                .WithConsoleLogger()
+                .Build();
+
+            return WardenInstance.Create(name,wardenConfiguration);
         }
     }
 }
