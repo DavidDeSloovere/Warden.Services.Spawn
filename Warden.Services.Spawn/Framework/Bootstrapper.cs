@@ -16,7 +16,6 @@ using Warden.Messages.Events;
 using Nancy.Bootstrapper;
 using Nancy;
 using Nancy.Bootstrappers.Autofac;
-using Warden.Services.Spawn.Services;
 
 namespace Warden.Services.Spawn.Framework
 {
@@ -44,7 +43,6 @@ namespace Warden.Services.Spawn.Framework
                 builder.RegisterAssemblyTypes(assembly).AsClosedTypesOf(typeof(ICommandHandler<>));
 
                 builder.RegisterType<Handler>().As<IHandler>();
-                builder.RegisterType<WardenHostService>().As<IWardenHostService>();
                 builder.RegisterInstance(_configuration.GetSettings<ExceptionlessSettings>()).SingleInstance();
                 builder.RegisterType<ExceptionlessExceptionHandler>().As<IExceptionHandler>().SingleInstance();
                 SecurityContainer.Register(builder, _configuration);

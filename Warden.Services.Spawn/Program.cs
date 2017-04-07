@@ -1,6 +1,6 @@
 ﻿using Warden.Common.Host;
 using Warden.Services.Spawn.Framework;
-using Warden.Messages.Commands.Spawn;
+using Warden.Messages.Commands.Organizations;
 
 namespace Warden.Services.Spawn
 {
@@ -12,7 +12,7 @@ namespace Warden.Services.Spawn
                 .Create<Startup>(port: 5056)
                 .UseAutofac(Bootstrapper.LifetimeScope)
                 .UseRabbitMq(queueName: typeof(Program).Namespace)
-                .SubscribeToCommand<SpawnWarden>()
+                .SubscribeToCommand<CreateExternalWarden>()
                 .Build()
                 .Run();
         }
